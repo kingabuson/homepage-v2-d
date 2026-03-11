@@ -6,7 +6,7 @@ const segments = [
     {
         id: 'vc',
         title: 'Venture Capital Funds',
-        link: '#vc',
+        link: 'https://w.tracxn.com/customers/solutions-for-venture-capital-funds',
         description: 'Discover emerging startups, track competitor portfolios, and source high-potential deals faster.'
     },
     {
@@ -18,38 +18,38 @@ const segments = [
     {
         id: 'pe',
         title: 'Private Equity Funds',
-        link: '#pe',
+        link: 'https://w.tracxn.com/customers/solutions-for-private-equity-funds',
         description: 'Identify buyout opportunities, analyze market landscapes, and access deep company financials.'
     },
     {
         id: 'corpdev',
         title: 'Corporate Development - M&A Teams',
-        link: '#corpdev',
+        link: 'https://w.tracxn.com/customers/solutions-for-corporate-dev-and-ma-team',
         description: 'Streamline acquisition target searches, evaluate target synergies, and monitor market consolidation.'
     },
     {
         id: 'ib',
         title: 'Investment banks',
-        link: '#ib',
+        link: 'https://w.tracxn.com/customers/solutions-for-investment-banks',
         description: 'Support capital raising and advisory services with comprehensive private market intelligence and comps.'
     },
     {
         id: 'journalists',
         title: 'Journalists and Publications',
-        link: '#journalists',
+        link: 'https://w.tracxn.com/customers/solutions-for-journalists-publications',
         description: 'Access reliable data on funding rounds, valuations, and key executives to build compelling industry narratives.'
     },
     {
         id: 'incubators',
         title: 'Incubators',
-        link: '#incubators',
+        link: 'https://w.tracxn.com/customers/solutions-for-incubators',
         description: 'Benchmark portfolio performance, connect with follow-on investors, and analyze successful startup models.'
     },
     {
-        id: 'gov',
-        title: 'Government Agencies',
-        link: '#gov',
-        description: 'Track sector growth, monitor foreign investment, and formulate data-driven economic policies.'
+        id: 'universities',
+        title: 'Universities',
+        link: 'https://w.tracxn.com/customers/solutions-for-universities',
+        description: 'Support academic research, track innovation trends, and analyze emerging tech sectors comprehensively.'
     }
 ];
 

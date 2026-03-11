@@ -4,14 +4,14 @@ import heroBg from '../assets/hero-bg-final-v2.png';
 
 import fujitsuLogo from '../assets/fujitsu.png';
 import tenityLogo from '../assets/tenity.png';
-import accelVioletLogo from '../assets/accel-violet.png';
+import accelTextLogo from '../assets/accel-text.png';
 
 const logos = [
     { name: 'Tenity', url: tenityLogo },
     { name: 'Partech', url: 'https://cdn.tracxn.com/images/static/homepage/clients/partech-wbg_90x90_1x.png' },
     { name: 'IQT', url: 'https://cdn.tracxn.com/images/static/homepage/clients/iqt_90x90_1x.png' },
     { name: 'Fujitsu', url: fujitsuLogo },
-    { name: 'Accel', url: accelVioletLogo }
+    { name: 'Accel', url: accelTextLogo }
 ];
 
 const HeroV3 = () => {

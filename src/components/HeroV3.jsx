@@ -130,7 +130,7 @@ const styles = {
     container: {
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '120px 24px 60px',
+        padding: '60px 24px 60px', // Reduced top padding from 120px to 60px
         position: 'relative',
         zIndex: 1,
         display: 'flex',

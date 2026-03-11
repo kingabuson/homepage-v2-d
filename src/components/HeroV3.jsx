@@ -33,11 +33,11 @@ const HeroV3 = () => {
             </div>
             <div className="container" style={styles.container}>
                 <div style={styles.topSection}>
-                    <div style={styles.leftColumn}>
+                    <div style={styles.headerContent}>
                         <h1 style={styles.headline}>
-                            <span style={{ display: 'block' }}>Everything You Need on</span>
+                            Everything You Need on <br />
                             <motion.span
-                                style={{ ...styles.highlight, backgroundImage: highlightGradient, display: 'block' }}
+                                style={{ ...styles.highlight, backgroundImage: highlightGradient }}
                             >
                                 Private Market Data
                             </motion.span>
@@ -48,18 +48,42 @@ const HeroV3 = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             style={styles.subhead}
                         >
-                            AI-powered technology and human intelligence for global deal discovery. A unified data platform for investors, M&A teams, and government agencies.
+                            AI-powered technology and human intelligence for global deal discovery. <br />
+                            A unified data platform for investors, M&A teams, investment banks, and government agencies.
                         </motion.p>
-                        <div style={styles.ctaGroup}>
-                            <button className="btn-donate">Request for demo</button>
+                    </div>
+
+                    {/* Logos Section - Moved up */}
+                    <div style={styles.logosSection}>
+                        <div style={styles.logoStrip}>
+                            {logos.map((logo, index) => (
+                                <motion.div
+                                    key={index}
+                                    style={styles.logoItem}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
+                                >
+                                    <img
+                                        src={logo.url}
+                                        alt={logo.name}
+                                        style={styles.logoImg}
+                                        title={logo.name}
+                                    />
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
+                    <div style={styles.ctaGroup}>
+                        <button className="btn-donate">Request for demo</button>
+                    </div>
+
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        style={styles.rightColumn}
+                        initial={{ opacity: 0, y: 60, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                        style={styles.videoContainer}
                     >
                         <div style={styles.videoWrapper}>
                             <video
@@ -72,29 +96,6 @@ const HeroV3 = () => {
                             />
                         </div>
                     </motion.div>
-                </div>
-
-                {/* Logos Section */}
-                <div style={styles.logosSection}>
-                    <h3 style={styles.trustedBy}>Trusted by</h3>
-                    <div style={styles.logoStrip}>
-                        {logos.map((logo, index) => (
-                            <motion.div
-                                key={index}
-                                style={styles.logoItem}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
-                            >
-                                <img
-                                    src={logo.url}
-                                    alt={logo.name}
-                                    style={styles.logoImg}
-                                    title={logo.name}
-                                />
-                            </motion.div>
-                        ))}
-                    </div>
                 </div>
             </div>
         </section>
@@ -129,31 +130,32 @@ const styles = {
     container: {
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '0 24px',
+        padding: '120px 24px 60px',
         position: 'relative',
         zIndex: 1,
         display: 'flex',
         flexDirection: 'column',
-        minHeight: 'calc(100vh - 180px)', // Account for section padding
-        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
     },
     topSection: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: '80px', // Reverted back to a smaller gap to fit side-by-side
-        marginTop: 'auto',
-        marginBottom: 'auto',
+        width: '100%',
+        maxWidth: '1000px',
+        margin: '0 auto',
     },
-    leftColumn: {
-        flex: '1.2 1 0',
-        textAlign: 'left',
-        minWidth: '50%',
+    headerContent: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
     },
-    rightColumn: {
-        flex: '1 1 0',
-        minWidth: '40%',
+    videoContainer: {
+        width: '100%',
+        margin: '0 auto',
+        maxWidth: '1000px',
     },
     headline: {
         fontSize: '3.5rem',

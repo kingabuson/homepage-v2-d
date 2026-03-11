@@ -1,19 +1,61 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 const segments = [
-    { id: 'vc', title: 'Venture Capital Funds', link: '#vc' },
-    { id: 'innovation', title: 'Corporate Innovation', link: '#innovation' },
-    { id: 'pe', title: 'Private Equity Funds', link: '#pe' },
-    { id: 'corpdev', title: 'Corporate Development - M&A Teams', link: '#corpdev' },
-    { id: 'ib', title: 'Investment banks', link: '#ib' },
-    { id: 'journalists', title: 'Journalists and Publications', link: '#journalists' },
-    { id: 'incubators', title: 'Incubators', link: '#incubators' },
-    { id: 'gov', title: 'Government Agencies', link: '#gov' }
+    {
+        id: 'vc',
+        title: 'Venture Capital Funds',
+        link: '#vc',
+        description: 'Discover emerging startups, track competitor portfolios, and source high-potential deals faster.'
+    },
+    {
+        id: 'innovation',
+        title: 'Corporate Innovation',
+        link: '#innovation',
+        description: 'Monitor technology trends, scout for innovative partnerships, and stay ahead of industry disruptions.'
+    },
+    {
+        id: 'pe',
+        title: 'Private Equity Funds',
+        link: '#pe',
+        description: 'Identify buyout opportunities, analyze market landscapes, and access deep company financials.'
+    },
+    {
+        id: 'corpdev',
+        title: 'Corporate Development - M&A Teams',
+        link: '#corpdev',
+        description: 'Streamline acquisition target searches, evaluate target synergies, and monitor market consolidation.'
+    },
+    {
+        id: 'ib',
+        title: 'Investment banks',
+        link: '#ib',
+        description: 'Support capital raising and advisory services with comprehensive private market intelligence and comps.'
+    },
+    {
+        id: 'journalists',
+        title: 'Journalists and Publications',
+        link: '#journalists',
+        description: 'Access reliable data on funding rounds, valuations, and key executives to build compelling industry narratives.'
+    },
+    {
+        id: 'incubators',
+        title: 'Incubators',
+        link: '#incubators',
+        description: 'Benchmark portfolio performance, connect with follow-on investors, and analyze successful startup models.'
+    },
+    {
+        id: 'gov',
+        title: 'Government Agencies',
+        link: '#gov',
+        description: 'Track sector growth, monitor foreign investment, and formulate data-driven economic policies.'
+    }
 ];
 
 const CustomerSegments = () => {
+    const [activeIndex, setActiveIndex] = useState(null);
+
     return (
         <section style={styles.section}>
             <div className="container" style={styles.container}>
@@ -25,24 +67,49 @@ const CustomerSegments = () => {
                 </div>
 
                 <div style={styles.grid}>
-                    {segments.map((item, idx) => (
-                        <motion.a
-                            key={idx}
-                            href={item.link}
-                            style={styles.listItem}
-                            initial="rest"
-                            whileHover="hover"
-                            animate="rest"
-                        >
-                            <span style={styles.itemTitle}>{item.title}</span>
-                            <motion.div variants={{
-                                rest: { x: 0 },
-                                hover: { x: 8 }
-                            }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
-                                <ArrowRight size={24} color="#656565" strokeWidth={1} />
-                            </motion.div>
-                        </motion.a>
-                    ))}
+                    {segments.map((item, idx) => {
+                        const isActive = activeIndex === idx;
+
+                        return (
+                            <div key={idx} style={styles.listItemWrapper}>
+                                <motion.button
+                                    style={styles.listItem}
+                                    onClick={() => setActiveIndex(isActive ? null : idx)}
+                                    initial="rest"
+                                    whileHover="hover"
+                                    animate="rest"
+                                >
+                                    <span style={styles.itemTitle}>{item.title}</span>
+                                    <motion.div
+                                        animate={{ rotate: isActive ? 180 : 0 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        <ChevronDown size={24} color="#656565" strokeWidth={1.5} />
+                                    </motion.div>
+                                </motion.button>
+
+                                <AnimatePresence>
+                                    {isActive && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                            style={styles.accordionContentWrapper}
+                                        >
+                                            <div style={styles.accordionContent}>
+                                                <p style={styles.descriptionText}>{item.description}</p>
+                                                <a href={item.link} style={styles.exploreLink}>
+                                                    Explore
+                                                    <ArrowRight size={18} style={styles.exploreArrow} />
+                                                </a>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
@@ -78,13 +145,19 @@ const styles = {
         columnGap: '80px',
         rowGap: '0px',
     },
+    listItemWrapper: {
+        borderBottom: '1px solid #1a1a1a',
+    },
     listItem: {
+        width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '32px 0 24px 0',
-        borderBottom: '1px solid #1a1a1a',
-        textDecoration: 'none',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        textAlign: 'left',
         color: '#1a1a1a',
     },
     itemTitle: {
@@ -92,6 +165,33 @@ const styles = {
         fontWeight: 600,
         fontFamily: 'var(--font-family-sans)',
         color: '#1a1a1a',
+    },
+    accordionContentWrapper: {
+        overflow: 'hidden',
+    },
+    accordionContent: {
+        paddingBottom: '32px',
+        paddingRight: '40px',
+    },
+    descriptionText: {
+        fontSize: '1rem',
+        color: '#5f6368',
+        lineHeight: 1.6,
+        marginBottom: '16px',
+        fontFamily: 'var(--font-family-sans)',
+    },
+    exploreLink: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        fontSize: '1rem',
+        color: '#0056b3',
+        textDecoration: 'none',
+        fontWeight: 600,
+        fontFamily: 'var(--font-family-sans)',
+        transition: 'color 0.2s',
+    },
+    exploreArrow: {
+        marginLeft: '6px',
     }
 };
 

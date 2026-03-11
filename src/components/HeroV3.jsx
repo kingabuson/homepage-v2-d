@@ -48,8 +48,8 @@ const HeroV3 = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             style={styles.subhead}
                         >
-                            AI-powered technology and human intelligence for global deal discovery. <br />
-                            A unified data platform for investors, M&A teams, investment banks, and government agencies.
+                            Scale your sourcing with AI-driven insights and expert-vetted data, <br />
+                            unified in a single platform for investors, banks, and policy-makers.
                         </motion.p>
                     </div>
 
@@ -158,13 +158,13 @@ const styles = {
         maxWidth: '1000px',
     },
     headline: {
-        fontSize: '3.5rem',
+        fontSize: '5rem', // Increased from 3.5rem
         fontFamily: '"PT Serif", serif',
         fontWeight: 400,
         color: '#1a1a1a',
         marginBottom: '20px',
         letterSpacing: '-0.02em',
-        lineHeight: 1.2,
+        lineHeight: 1.1, // Tighter line height for larger text
         position: 'relative',
         zIndex: 2,
     },

@@ -144,6 +144,7 @@ const styles = {
         gridTemplateColumns: 'repeat(2, 1fr)',
         columnGap: '80px',
         rowGap: '0px',
+        alignItems: 'start', // Prevents rows from expanding together
     },
     listItemWrapper: {
         borderBottom: '1px solid #1a1a1a',

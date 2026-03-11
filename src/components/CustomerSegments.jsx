@@ -66,50 +66,96 @@ const CustomerSegments = () => {
                     </h2>
                 </div>
 
-                <div style={styles.grid}>
-                    {segments.map((item, idx) => {
-                        const isActive = activeIndex === idx;
-
-                        return (
-                            <div key={idx} style={styles.listItemWrapper}>
-                                <motion.button
-                                    style={styles.listItem}
-                                    onClick={() => setActiveIndex(isActive ? null : idx)}
-                                    initial="rest"
-                                    whileHover="hover"
-                                    animate="rest"
-                                >
-                                    <span style={styles.itemTitle}>{item.title}</span>
-                                    <motion.div
-                                        animate={{ rotate: isActive ? 180 : 0 }}
-                                        transition={{ duration: 0.3 }}
+                <div style={styles.columnsContainer}>
+                    {/* Left Column */}
+                    <div style={styles.column}>
+                        {segments.slice(0, Math.ceil(segments.length / 2)).map((item, idx) => {
+                            const isActive = activeIndex === item.id; // Using ID for exact matching across columns
+                            return (
+                                <div key={item.id} style={styles.listItemWrapper}>
+                                    <motion.button
+                                        style={styles.listItem}
+                                        onClick={() => setActiveIndex(isActive ? null : item.id)}
+                                        initial="rest"
+                                        whileHover="hover"
+                                        animate="rest"
                                     >
-                                        <ChevronDown size={24} color="#656565" strokeWidth={1.5} />
-                                    </motion.div>
-                                </motion.button>
-
-                                <AnimatePresence>
-                                    {isActive && (
+                                        <span style={styles.itemTitle}>{item.title}</span>
                                         <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                            style={styles.accordionContentWrapper}
+                                            animate={{ rotate: isActive ? 180 : 0 }}
+                                            transition={{ duration: 0.3 }}
                                         >
-                                            <div style={styles.accordionContent}>
-                                                <p style={styles.descriptionText}>{item.description}</p>
-                                                <a href={item.link} style={styles.exploreLink}>
-                                                    Explore
-                                                    <ArrowRight size={18} style={styles.exploreArrow} />
-                                                </a>
-                                            </div>
+                                            <ChevronDown size={24} color="#656565" strokeWidth={1.5} />
                                         </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        );
-                    })}
+                                    </motion.button>
+                                    <AnimatePresence>
+                                        {isActive && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                                style={styles.accordionContentWrapper}
+                                            >
+                                                <div style={styles.accordionContent}>
+                                                    <p style={styles.descriptionText}>{item.description}</p>
+                                                    <a href={item.link} style={styles.exploreLink}>
+                                                        Explore
+                                                        <ArrowRight size={18} style={styles.exploreArrow} />
+                                                    </a>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Right Column */}
+                    <div style={styles.column}>
+                        {segments.slice(Math.ceil(segments.length / 2)).map((item, idx) => {
+                            const isActive = activeIndex === item.id;
+                            return (
+                                <div key={item.id} style={styles.listItemWrapper}>
+                                    <motion.button
+                                        style={styles.listItem}
+                                        onClick={() => setActiveIndex(isActive ? null : item.id)}
+                                        initial="rest"
+                                        whileHover="hover"
+                                        animate="rest"
+                                    >
+                                        <span style={styles.itemTitle}>{item.title}</span>
+                                        <motion.div
+                                            animate={{ rotate: isActive ? 180 : 0 }}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            <ChevronDown size={24} color="#656565" strokeWidth={1.5} />
+                                        </motion.div>
+                                    </motion.button>
+                                    <AnimatePresence>
+                                        {isActive && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                                style={styles.accordionContentWrapper}
+                                            >
+                                                <div style={styles.accordionContent}>
+                                                    <p style={styles.descriptionText}>{item.description}</p>
+                                                    <a href={item.link} style={styles.exploreLink}>
+                                                        Explore
+                                                        <ArrowRight size={18} style={styles.exploreArrow} />
+                                                    </a>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>
@@ -139,12 +185,16 @@ const styles = {
         margin: '0 auto',
         lineHeight: 1.2,
     },
-    grid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        columnGap: '80px',
-        rowGap: '0px',
-        alignItems: 'start', // Prevents rows from expanding together
+    columnsContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        gap: '80px',
+    },
+    column: {
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
     },
     listItemWrapper: {
         borderBottom: '1px solid #1a1a1a',

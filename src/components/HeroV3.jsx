@@ -2,12 +2,16 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import heroBg from '../assets/hero-bg-final-v2.png';
 
+import fujitsuLogo from '../assets/fujitsu.png';
+import tenityLogo from '../assets/tenity.png';
+import accelVioletLogo from '../assets/accel-violet.png';
+
 const logos = [
-    { name: 'Accel', url: 'https://cdn.tracxn.com/images/static/homepage/clients/accel_90x90_1x.png' },
+    { name: 'Tenity', url: tenityLogo },
     { name: 'Partech', url: 'https://cdn.tracxn.com/images/static/homepage/clients/partech-wbg_90x90_1x.png' },
     { name: 'IQT', url: 'https://cdn.tracxn.com/images/static/homepage/clients/iqt_90x90_1x.png' },
-    { name: 'Palo Alto Networks', url: 'https://cdn.tracxn.com/images/static/homepage/clients/paloalto_90x90_1x.png' },
-    { name: 'Maersk', url: 'https://cdn.tracxn.com/images/static/homepage/clients/maersk_90x90_1x.png' }
+    { name: 'Fujitsu', url: fujitsuLogo },
+    { name: 'Accel', url: accelVioletLogo }
 ];
 
 const HeroV3 = () => {

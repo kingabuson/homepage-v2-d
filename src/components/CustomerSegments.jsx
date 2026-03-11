@@ -12,7 +12,7 @@ const segments = [
     {
         id: 'innovation',
         title: 'Corporate Innovation',
-        link: '#innovation',
+        link: 'https://w.tracxn.com/customers/solutions-for-corporate-innovation',
         description: 'Monitor technology trends, scout for innovative partnerships, and stay ahead of industry disruptions.'
     },
     {

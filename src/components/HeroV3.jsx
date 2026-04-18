@@ -2,32 +2,16 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import heroBg from '../assets/hero-bg-final-v2.png';
 
-import permiraLogo from '../assets/logo-permira.png';
-import investcorpLogo from '../assets/logo-investcorp.png';
-import kaizenvestLogo from '../assets/logo-kaizenvest.png';
-import steadviewLogo from '../assets/logo-steadview.png';
-import fortinoLogo from '../assets/logo-fortino.png';
-import iterativeLogo from '../assets/logo-iterative.png';
-import almiLogo from '../assets/logo-almi.png';
-import ivycapLogo from '../assets/logo-ivycap.png';
-import entreeLogo from '../assets/logo-entreecapital.png';
-import iqtLogo from '../assets/logo-iqt.png';
+import fujitsuLogo from '../assets/fujitsu.png';
+import tenityLogo from '../assets/tenity.png';
+import accelTextLogo from '../assets/accel-text.png';
 
-const logoRows = [
-    [
-        { name: 'Permira', url: permiraLogo },
-        { name: 'Investcorp', url: investcorpLogo },
-        { name: 'Kaizenvest', url: kaizenvestLogo },
-        { name: 'Steadview Capital', url: steadviewLogo },
-        { name: 'Fortino Capital', url: fortinoLogo }
-    ],
-    [
-        { name: 'Iterative', url: iterativeLogo },
-        { name: 'Almi', url: almiLogo },
-        { name: 'IvyCap Ventures', url: ivycapLogo },
-        { name: 'Entrée Capital', url: entreeLogo },
-        { name: 'IQT', url: iqtLogo }
-    ]
+const logos = [
+    { name: 'Tenity', url: tenityLogo },
+    { name: 'Partech', url: 'https://cdn.tracxn.com/images/static/homepage/clients/partech-wbg_90x90_1x.png' },
+    { name: 'IQT', url: 'https://cdn.tracxn.com/images/static/homepage/clients/iqt_90x90_1x.png' },
+    { name: 'Fujitsu', url: fujitsuLogo },
+    { name: 'Accel', url: accelTextLogo }
 ];
 
 const HeroV3 = () => {
@@ -43,6 +27,7 @@ const HeroV3 = () => {
 
     return (
         <section style={styles.section}>
+            {/* Background Image Layer */}
             <div style={styles.bgLayer}>
                 <img
                     src={heroBg}
@@ -52,23 +37,13 @@ const HeroV3 = () => {
             </div>
             <div className="container" style={styles.container}>
                 <div style={styles.topSection}>
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        style={styles.eyebrow}
-                    >
-                        <span style={styles.eyebrowDot} />
-                        The Private Market Intelligence Platform
-                    </motion.div>
-
                     <div style={styles.headerContent}>
                         <h1 style={styles.headline}>
-                            Find, analyze, and win <br />
+                            Everything You Need on <br />
                             <motion.span
                                 style={{ ...styles.highlight, backgroundImage: highlightGradient }}
                             >
-                                private market deals
+                                Private Market Data
                             </motion.span>
                         </h1>
                         <motion.p
@@ -77,43 +52,35 @@ const HeroV3 = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             style={styles.subhead}
                         >
-                            AI-powered sourcing, human-verified data, and deep coverage of companies, funding,
-                            financials, cap tables, and regulatory filings — across 3,000+ sectors, trusted by the
-                            world's leading investors, banks, and policy-makers.
+                            Scale your sourcing with AI-driven insights and expert-vetted data, <br />
+                            unified in a single platform for investors, banks, and policy-makers.
                         </motion.p>
+                    </div>
+
+                    {/* Logos Section - Moved up */}
+                    <div style={styles.logosSection}>
+                        <div style={styles.logoStrip}>
+                            {logos.map((logo, index) => (
+                                <motion.div
+                                    key={index}
+                                    style={styles.logoItem}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
+                                >
+                                    <img
+                                        src={logo.url}
+                                        alt={logo.name}
+                                        style={styles.logoImg}
+                                        title={logo.name}
+                                    />
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
 
                     <div style={styles.ctaGroup}>
                         <button className="btn-donate">Request for demo</button>
-                        <a href="#features" style={styles.secondaryCta}>
-                            See what's inside &rarr;
-                        </a>
-                    </div>
-
-                    <div style={styles.logosSection}>
-                        <p style={styles.trustedBy}>Trusted by 4,000+ teams worldwide</p>
-                        <div style={styles.logoGrid}>
-                            {logoRows.map((row, rowIdx) => (
-                                <div key={rowIdx} style={styles.logoRow}>
-                                    {row.map((logo, index) => (
-                                        <motion.div
-                                            key={logo.name}
-                                            style={styles.logoItem}
-                                            initial={{ opacity: 0, y: 6 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.5, delay: 0.5 + (rowIdx * 5 + index) * 0.05 }}
-                                        >
-                                            <img
-                                                src={logo.url}
-                                                alt={logo.name}
-                                                style={styles.logoImg}
-                                                title={logo.name}
-                                            />
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            ))}
-                        </div>
                     </div>
 
                     <motion.div
@@ -167,7 +134,7 @@ const styles = {
     container: {
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '40px 24px 60px',
+        padding: '60px 24px 60px', // Reduced top padding from 120px to 60px
         position: 'relative',
         zIndex: 1,
         display: 'flex',
@@ -180,32 +147,8 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        maxWidth: '1100px',
+        maxWidth: '1000px',
         margin: '0 auto',
-    },
-    eyebrow: {
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '8px',
-        padding: '6px 14px',
-        borderRadius: '999px',
-        backgroundColor: 'rgba(26, 115, 232, 0.08)',
-        color: '#0b3d91',
-        fontFamily: 'var(--font-family-sans)',
-        fontSize: '0.82rem',
-        fontWeight: 600,
-        letterSpacing: '0.02em',
-        marginBottom: '24px',
-        border: '1px solid rgba(26,115,232,0.14)',
-        position: 'relative',
-        zIndex: 2,
-    },
-    eyebrowDot: {
-        width: '6px',
-        height: '6px',
-        borderRadius: '50%',
-        background: 'linear-gradient(135deg,#1a73e8,#66CCFF)',
-        boxShadow: '0 0 0 3px rgba(26,115,232,0.15)',
     },
     headerContent: {
         display: 'flex',
@@ -219,13 +162,13 @@ const styles = {
         maxWidth: '1000px',
     },
     headline: {
-        fontSize: '4.75rem',
+        fontSize: '5rem', // Increased from 3.5rem
         fontFamily: '"PT Serif", serif',
         fontWeight: 400,
         color: '#1a1a1a',
         marginBottom: '20px',
         letterSpacing: '-0.02em',
-        lineHeight: 1.05,
+        lineHeight: 1.1, // Tighter line height for larger text
         position: 'relative',
         zIndex: 2,
     },
@@ -236,48 +179,37 @@ const styles = {
         color: 'transparent',
         WebkitTextFillColor: 'transparent',
         display: 'inline-block',
-        fontStyle: 'italic',
     },
     subhead: {
-        fontSize: '1.18rem',
-        color: '#4a4f55',
+        fontSize: '1.25rem',
+        color: '#5f6368',
         marginBottom: '24px',
         fontFamily: 'var(--font-family-sans)',
         lineHeight: 1.6,
-        maxWidth: '780px',
-        margin: '0 auto 30px',
+        maxWidth: '1000px',
+        margin: '0 0 30px 0',
         position: 'relative',
         zIndex: 2,
     },
     logosSection: {
         textAlign: 'center',
-        marginTop: '48px',
-        marginBottom: '48px',
-        width: '100%',
+        marginTop: 'auto',
     },
     trustedBy: {
-        fontSize: '0.82rem',
-        color: '#6b7280',
-        marginBottom: '24px',
+        fontSize: '1rem',
+        color: '#5f6368',
+        marginBottom: '20px',
         fontFamily: 'var(--font-family-sans)',
         fontWeight: 600,
         textTransform: 'uppercase',
-        letterSpacing: '1.2px',
+        letterSpacing: '1px',
     },
-    logoGrid: {
+    logoStrip: {
         display: 'flex',
-        flexDirection: 'column',
-        gap: '24px',
-        width: '100%',
-        maxWidth: '1100px',
-        margin: '0 auto',
-    },
-    logoRow: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
-        gap: '24px',
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyItems: 'center',
+        gap: '40px',
+        flexWrap: 'wrap',
         position: 'relative',
         zIndex: 2,
     },
@@ -285,37 +217,15 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '64px',
-        width: '100%',
     },
     logoImg: {
-        maxHeight: '56px',
-        maxWidth: '160px',
+        height: '100px',
         width: 'auto',
-        height: 'auto',
-        objectFit: 'contain',
-        filter: 'saturate(0.9)',
-        opacity: 0.88,
-        transition: 'all 0.25s ease',
+        transition: 'all 0.3s ease',
     },
     ctaGroup: {
-        marginTop: '4px',
-        marginBottom: '20px',
-        display: 'flex',
-        gap: '12px',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-    },
-    secondaryCta: {
-        color: '#0b3d91',
-        fontFamily: 'var(--font-family-sans)',
-        fontWeight: 600,
-        fontSize: '0.95rem',
-        textDecoration: 'none',
-        padding: '10px 14px',
-        borderRadius: '8px',
-        transition: 'background 0.2s',
+        marginTop: '10px',
+        marginBottom: '40px',
     },
     videoWrapper: {
         width: '100%',

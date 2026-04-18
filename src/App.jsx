@@ -31,11 +31,11 @@ function App() {
         </AnimatedSection>
 
         <AnimatedSection>
-          <Features />
+          <Stats />
         </AnimatedSection>
 
         <AnimatedSection>
-          <Stats />
+          <Features />
         </AnimatedSection>
 
         <AnimatedSection>

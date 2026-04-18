@@ -134,10 +134,10 @@ const Footer = () => {
 
 const styles = {
     footer: {
-        backgroundColor: '#001a3d',
+        backgroundColor: '#001a3d', // Dark blue from image
         color: '#e0e0e0',
-        padding: '40px 0 24px',
-        fontSize: '0.82rem',
+        padding: '60px 0 40px',
+        fontSize: '0.9rem',
     },
     container: {
         maxWidth: '1200px',
@@ -147,8 +147,8 @@ const styles = {
     topSection: {
         display: 'grid',
         gridTemplateColumns: 'repeat(5, 1fr)',
-        gap: '20px',
-        marginBottom: '36px',
+        gap: '24px',
+        marginBottom: '60px',
     },
     column: {
         display: 'flex',
@@ -156,10 +156,10 @@ const styles = {
     },
     heading: {
         color: 'white',
-        fontSize: '0.95rem',
+        fontSize: '1.1rem',
         fontWeight: 500,
-        marginBottom: '12px',
-        fontFamily: 'Inter, sans-serif',
+        marginBottom: '16px',
+        fontFamily: 'Inter, sans-serif', // Keep footer headings clean sans-serif
     },
     list: {
         listStyle: 'none',
@@ -167,17 +167,17 @@ const styles = {
         margin: 0,
         display: 'flex',
         flexDirection: 'column',
-        gap: '6px',
+        gap: '8px',
     },
     link: {
         color: '#b0b8c4',
         textDecoration: 'none',
-        fontSize: '0.82rem',
+        fontSize: '0.9rem',
         transition: 'color 0.2s',
     },
     bottomSection: {
         borderTop: '1px solid rgba(255,255,255,0.1)',
-        paddingTop: '24px',
+        paddingTop: '40px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -185,8 +185,8 @@ const styles = {
     },
     socialIcons: {
         display: 'flex',
-        gap: '20px',
-        marginBottom: '16px',
+        gap: '24px',
+        marginBottom: '24px',
     },
     icon: {
         color: '#b0b8c4',
@@ -194,8 +194,8 @@ const styles = {
     },
     copyright: {
         color: '#7a869a',
-        fontSize: '0.72rem',
-        lineHeight: 1.55,
+        fontSize: '0.8rem',
+        lineHeight: 1.6,
         maxWidth: '900px',
     }
 };
